@@ -6,8 +6,7 @@ import * as multerS3 from 'multer-s3';
 // Set S3 endpoint to DigitalOcean Spaces
 const spacesEndpoint = new AWS.Endpoint('ams3.digitaloceanspaces.com');
 
-//const AWS_S3_BUCKET_NAME = process.env.AWS_S3_BUCKET_NAME;
-console.log(process.env.AWS_S3_BUCKET_NAME);
+const AWS_S3_BUCKET_NAME = process.env.AWS_S3_BUCKET_NAME;
 const s3 = new AWS.S3({
     endpoint: spacesEndpoint.href,
     sslEnabled: false,
@@ -21,10 +20,10 @@ AWS.config.update({
 });
 
 @Injectable()
-export class FileUploadService {
+export class ArchivoService {
   constructor() {}
 
-  async fileupload(@Req() req, @Res() res) {
+  async Archivo(@Req() req, @Res() res) {
     try {
       this.upload(req, res, function(error) {
         if (error) {

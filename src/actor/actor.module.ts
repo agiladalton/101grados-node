@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { FileUploadService } from 'src/utils/file_upload.service';
+import { ArchivoService } from 'src/archivo/archivo.service';
 import { MbActorController } from './actor.controller';
 import { MbActor } from './actor.entity';
 import { MbActorService } from './actor.service';
@@ -10,7 +10,7 @@ import { MbActorService } from './actor.service';
     TypeOrmModule.forFeature([MbActor]),
   ],
   providers: [
-    FileUploadService,
+    ArchivoService,
     MbActorService,
   ],
   controllers: [MbActorController],

@@ -4,7 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { MbActorModule } from './actor/actor.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { FileUploadModule } from './utils/file_upload.module';
+import { ArchivoModule } from './archivo/archivo.module';
 
 @Module({
   imports: [
@@ -19,7 +19,7 @@ import { FileUploadModule } from './utils/file_upload.module';
       autoLoadEntities: true,
       synchronize: true,
     }),
-    FileUploadModule,
+    ArchivoModule,
     MbActorModule,
   ],
   controllers: [AppController],
