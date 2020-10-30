@@ -11,10 +11,10 @@ import { MbPeliculaModule } from './pelicula/pelicula.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'sabo.mejorseguridad.com',
+      host: 'localhost',
       port: 56677,
-      username: 'constantine',
-      password: '$$KeanuReeves2015',
+      username: '101grados',
+      password: '123456',
       database: '101gradosdb',
       autoLoadEntities: true,
       synchronize: true,
