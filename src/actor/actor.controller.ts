@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Post, Put, Res, UploadedFiles, UseInterceptors } from '@nestjs/common';
 import { MbActor } from './actor.entity';
 import { MbActorService } from './actor.service';
-import { Respuesta } from './dto/crear-actor';
+import { Respuesta } from './dto/respuesta';
 
 @Controller('actor')
 export class MbActorController {

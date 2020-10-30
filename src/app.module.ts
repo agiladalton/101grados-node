@@ -5,6 +5,7 @@ import { MbActorModule } from './actor/actor.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ArchivoModule } from './archivo/archivo.module';
+import { MbPeliculaModule } from './pelicula/pelicula.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { ArchivoModule } from './archivo/archivo.module';
     }),
     ArchivoModule,
     MbActorModule,
+    MbPeliculaModule,
   ],
   controllers: [AppController],
   providers: [AppService],

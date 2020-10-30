@@ -5,7 +5,7 @@ export class MbActor {
   @PrimaryGeneratedColumn({ name: "id_actor" })
   idActor: number;
 
-  @Column({ length: 500 })
+  @Column({ length: 45 })
   nombre: string;
 
   @Column('int')
