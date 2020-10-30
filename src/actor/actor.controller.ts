@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Post, Put, Res, UploadedFiles, UseInterceptors } from '@nestjs/common';
 import { MbActor } from './actor.entity';
 import { MbActorService } from './actor.service';
-import { CrearActorDto } from './dto/crear-actor';
+import { Respuesta } from './dto/crear-actor';
 
 @Controller('actor')
 export class MbActorController {
@@ -10,13 +10,15 @@ export class MbActorController {
   ) {}
 
   @Post()
-  create(@Body() crearActorDto: CrearActorDto): Promise<MbActor> {
-    return this.mbActorService.create(crearActorDto);
+  async create(@Body() mbActor: MbActor): Promise<Respuesta> {
+    return new Respuesta(true, 'Proceso realizado correctamente.', await this.mbActorService.create(mbActor));
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() crearActorDto: CrearActorDto) {
-    return this.mbActorService.findOneAndUpdate(id, crearActorDto);
+  async update(@Param('id') id: string, @Body() mbActor: MbActor): Promise<Respuesta> {
+    await this.mbActorService.findOneAndUpdate(id, mbActor);
+
+    return new Respuesta(true, 'Proceso realizado correctamente.', mbActor);
   }
 
   @Get()

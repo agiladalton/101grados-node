@@ -8,7 +8,6 @@ import { ArchivoModule } from './archivo/archivo.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'sabo.mejorseguridad.com',

@@ -1,27 +1,30 @@
-import { Controller, Post, Req, Res, UploadedFiles, UseInterceptors } from '@nestjs/common';
-import { FilesInterceptor } from '@nestjs/platform-express';
+import { Controller, Post, Req, Res, UploadedFile, UploadedFiles, UseInterceptors } from '@nestjs/common';
+import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
 import { ArchivoService } from './archivo.service';
 
-@Controller('Archivo')
+@Controller('archivo')
 export class ArchivoController {
   constructor(
-    private readonly ArchivoController: ArchivoService
+    private readonly archivoService: ArchivoService
   ) {}
 
-  @Post()
-  async create(@Req() request, @Res() response) {
+  @Post('subir')
+  async subir(@Req() req, @Res() response) {
     try {
-      await this.ArchivoController.Archivo(request, response);
+      await this.archivoService.fileupload(req, response);
     } catch (error) {
-      return response.status(500).json(`Failed to upload image file: ${error.message}`);
+      return response.status(500).json({
+        success: false,
+        message: `Failed to upload image file: ${error.message}`
+      });
     }
   }
 
-  @Post('subirArchivos')
+  @Post('subirVarios')
   @UseInterceptors(FilesInterceptor('files'))
-  async subirArchivos(@UploadedFiles() files, @Res() response) {
+  async subirVarios(@UploadedFiles() files, @Res() response) {
     try {
-      //return await this.ArchivoService.Archivo(file, response);
+      //TODO: Controlar para subir varios archivos.
     } catch (error) {
       return response.status(500).json(`Failed to upload image file: ${error.message}`);
     }

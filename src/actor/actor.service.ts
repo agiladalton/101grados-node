@@ -2,7 +2,6 @@ import { Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { MbActor } from './actor.entity';
-import { CrearActorDto } from './dto/crear-actor';
 
 @Injectable()
 export class MbActorService {
@@ -11,17 +10,11 @@ export class MbActorService {
     private actorRepository: Repository<MbActor>,
   ) {}
 
-  create(crearActorDto: CrearActorDto): Promise<MbActor> {
-    const user = new MbActor();
-    user.nombre = crearActorDto.nombre;
-    user.edad = crearActorDto.edad;
-    user.foto = crearActorDto.foto;
-
-    return this.actorRepository.save(user);
+  create(mbActor: MbActor): Promise<MbActor> {
+    return this.actorRepository.save(mbActor);
   }
 
   async findAll(): Promise<MbActor[]> {
-    console.log(process.env.PORT)
     return this.actorRepository.find();
   }
 
@@ -29,8 +22,8 @@ export class MbActorService {
     return this.actorRepository.findOne(id);
   }
 
-  findOneAndUpdate(id: string, crearActorDto: CrearActorDto) {
-    return this.actorRepository.update(id, crearActorDto);
+  findOneAndUpdate(id: string, mbActor: MbActor) {
+    return this.actorRepository.update(id, mbActor);
   }
 
   async remove(id: string): Promise<void> {
