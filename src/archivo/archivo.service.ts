@@ -9,7 +9,7 @@ import { extname } from 'path';
 ConfigModule.forRoot();
 
 // Set S3 endpoint to DigitalOcean Spaces
-const spacesEndpoint = new AWS.Endpoint('ams3.digitaloceanspaces.com');
+const spacesEndpoint = new AWS.Endpoint(process.env.AWS_ENDPOINT);
 
 const AWS_S3_BUCKET_NAME = process.env.AWS_S3_BUCKET_NAME;
 const s3 = new AWS.S3({
